@@ -6,75 +6,134 @@
 <title>오늘부터 캔바 전북</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;color:#111;padding:0}
-.page{max-width:600px;margin:0 auto;padding:2rem 1rem}
-.header{text-align:center;padding:2rem 1.5rem;background:#fff;border-radius:16px;border:1px solid #eee;margin-bottom:1.25rem}
-.canva-badge{display:inline-flex;align-items:center;gap:6px;background:#00C4CC22;color:#007B80;font-size:12px;font-weight:500;padding:4px 14px;border-radius:20px;margin-bottom:1rem}
-h1{font-size:26px;font-weight:600;margin-bottom:0.5rem}
-.subtitle{font-size:14px;color:#666;line-height:1.6}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.25rem 0 0}
-.info-item{background:#f9f9f9;border-radius:10px;padding:0.75rem 1rem;display:flex;align-items:center;gap:8px}
-.info-item i{font-size:18px;color:#007B80}
-.info-text{font-size:13px;color:#888}
-.info-text strong{display:block;font-weight:600;font-size:14px;color:#111}
-.encourage{background:#E8FFFE;border:1px solid #00C4CC44;border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.25rem}
-.encourage p{font-size:14px;color:#005F63;line-height:1.8}
-.form-section{background:#fff;border:1px solid #eee;border-radius:16px;padding:1.5rem;margin-bottom:1rem}
-.form-section label{display:block;font-size:14px;font-weight:600;margin-bottom:0.5rem}
-.form-section input{width:100%;padding:12px 14px;font-size:16px;border:1px solid #ddd;border-radius:10px;outline:none}
-.form-section input:focus{border-color:#00C4CC;box-shadow:0 0 0 3px #00C4CC22}
-.apply-btn{width:100%;padding:22px;font-size:22px;font-weight:600;background:#00C4CC;color:#fff;border:none;border-radius:16px;cursor:pointer;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;gap:10px}
-.apply-btn:hover{background:#00AAAF}
-.absent-btn{width:100%;padding:11px;font-size:14px;background:transparent;color:#888;border:1px solid #ddd;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
-.absent-btn:hover{background:#f5f5f5}
-.absent-section{display:none;background:#f9f9f9;border-radius:10px;padding:1rem;margin-top:0.75rem}
-.absent-section label{display:block;font-size:13px;font-weight:600;margin-bottom:0.4rem}
-.absent-section textarea{width:100%;padding:10px;font-size:14px;border:1px solid #ddd;border-radius:8px;resize:vertical;min-height:80px}
-.absent-submit{margin-top:0.5rem;width:100%;padding:9px;font-size:13px;background:#fff;color:#888;border:1px solid #ddd;border-radius:8px;cursor:pointer}
-.note{font-size:12px;color:#aaa;text-align:center;margin-top:0.75rem}
-.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 20px;border-radius:24px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;white-space:nowrap}
-.toast.show{opacity:1}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #111; }
+.page { max-width: 600px; margin: 0 auto; padding: 2rem 1rem; }
+.header { text-align: center; padding: 2rem 1.5rem; background: #fff; border-radius: 16px; border: 1px solid #eee; margin-bottom: 1.25rem; }
+.canva-badge { display: inline-flex; align-items: center; gap: 6px; background: #00C4CC22; color: #007B80; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px; margin-bottom: 1rem; }
+.header h1 { font-size: 26px; font-weight: 600; margin-bottom: 0.5rem; }
+.header .subtitle { font-size: 14px; color: #666; line-height: 1.6; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1.25rem 0 0; }
+.info-item { background: #f9f9f9; border-radius: 10px; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 8px; }
+.info-item i { font-size: 18px; color: #007B80; }
+.info-text { font-size: 13px; color: #888; }
+.info-text strong { display: block; font-weight: 600; font-size: 14px; color: #111; }
+.encourage { background: #E8FFFE; border: 1px solid #00C4CC44; border-radius: 16px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+.encourage p { font-size: 14px; color: #005F63; line-height: 1.8; }
+.encourage p strong { font-weight: 600; color: #003F42; }
+.form-section { background: #fff; border: 1px solid #eee; border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; }
+.form-section label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 0.5rem; }
+.form-section input[type="text"] { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid #ddd; border-radius: 10px; outline: none; font-family: inherit; }
+.form-section input[type="text"]:focus { border-color: #00C4CC; box-shadow: 0 0 0 3px #00C4CC22; }
+.btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.apply-btn { width: 100%; padding: 16px; font-size: 15px; font-weight: 600; background: #00C4CC; color: #fff; border: none; border-radius: 16px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-family: inherit; line-height: 1.4; transition: background 0.15s; }
+.apply-btn:hover { background: #00AAAF; }
+.apply-btn:active { transform: scale(0.98); }
+.apply-btn .btn-main { font-size: 17px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.apply-btn .btn-sub { font-size: 11px; opacity: 0.85; font-weight: 400; }
+.absent-btn { width: 100%; padding: 16px; font-size: 17px; font-weight: 500; background: #fff; color: #888; border: 1px solid #ddd; border-radius: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: inherit; transition: background 0.15s; }
+.absent-btn:hover { background: #f5f5f5; }
+.sheet-note { font-size: 12px; color: #aaa; text-align: center; margin-top: 0.75rem; }
+.toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 10px 20px; border-radius: 24px; font-size: 13px; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; }
+.toast.show { opacity: 1; }
 </style>
 </head>
 <body>
 <div class="page">
   <div class="header">
-    <div class="canva-badge"><i class="ti ti-certificate"></i> 캔바코리아 공식 트레이닝</div>
+    <div class="canva-badge">
+      <i class="ti ti-certificate"></i>
+      캔바코리아 공식 트레이닝
+    </div>
     <h1>오늘부터 캔바 전북</h1>
     <p class="subtitle">캔바코리아에서 진행하는 공식 교육용 트레이닝에 여러분을 초대합니다</p>
     <div class="info-grid">
-      <div class="info-item"><i class="ti ti-calendar"></i><div class="info-text"><strong>7월 4일 (토)</strong>2025년</div></div>
-      <div class="info-item"><i class="ti ti-clock"></i><div class="info-text"><strong>13:00 ~ 16:00</strong>3시간 트레이닝</div></div>
-      <div class="info-item" style="grid-column:1/-1"><i class="ti ti-map-pin"></i><div class="info-text"><strong>전북대학교</strong>전라북도 전주시</div></div>
+      <div class="info-item">
+        <i class="ti ti-calendar"></i>
+        <div class="info-text"><strong>7월 4일 (토)</strong>2026년</div>
+      </div>
+      <div class="info-item">
+        <i class="ti ti-clock"></i>
+        <div class="info-text"><strong>13:00 ~ 16:00</strong>3시간 트레이닝</div>
+      </div>
+      <div class="info-item">
+        <i class="ti ti-map-pin"></i>
+        <div class="info-text"><strong>전북대학교</strong>전라북도 전주시</div>
+      </div>
+      <div class="info-item">
+        <i class="ti ti-user-check"></i>
+        <div class="info-text"><strong>오진희 선생님</strong>양현고등학교</div>
+      </div>
     </div>
   </div>
+
   <div class="encourage">
-    <p><strong>✦ 지금 바로 신청하세요!</strong><br>캔바코리아 공인 강사에게 직접 배우는 단 하루, 전라북도에서의 특별한 기회입니다.<br>디자인 초보도 OK! 실습 중심으로 진행되어 누구나 쉽게 따라올 수 있어요.<br><strong>자리가 한정되어 있으니 서둘러 신청하세요 🎨</strong></p>
+    <p>
+      <strong>✦ 지금 바로 신청하세요!</strong><br>
+      캔바코리아 공인 강사에게 직접 배우는 단 하루, 전라북도에서의 특별한 기회입니다.<br>
+      디자인 초보도 OK! 실습 중심으로 진행되어 누구나 쉽게 따라올 수 있어요.<br>
+      <strong>자리가 한정되어 있으니 서둘러 신청하세요 🎨</strong>
+    </p>
   </div>
+
   <div class="form-section">
-    <label for="name-input"><i class="ti ti-user"></i> 이름을 입력해주세요</label>
-    <input type="text" id="name-input" placeholder="홍길동">
+    <label for="name-input">
+      <i class="ti ti-user" style="vertical-align:-2px; margin-right:4px;"></i>
+      이름을 입력해주세요
+    </label>
+    <input type="text" id="name-input" placeholder="홍길동" />
   </div>
-  <button class="apply-btn" onclick="handleApply()"><i class="ti ti-check"></i>신청하기</button>
-  <button class="absent-btn" onclick="toggleAbsent()"><i class="ti ti-x"></i>불참</button>
-  <div class="absent-section" id="absent-section">
-    <label>불참 사유를 입력해주세요</label>
-    <textarea id="absent-reason" placeholder="불참 사유를 간단히 작성해 주세요..."></textarea>
-    <button class="absent-submit" onclick="handleAbsent()">불참 제출</button>
+
+  <div class="btn-row">
+    <button class="apply-btn" onclick="handleApply()">
+      <span class="btn-main"><i class="ti ti-check"></i> 신청</span>
+      <span class="btn-sub">1~2초 기다리시면 신청사이트로 이동합니다.</span>
+    </button>
+    <button class="absent-btn" onclick="handleAbsent()">
+      <i class="ti ti-x"></i>
+      불참
+    </button>
   </div>
-  <p class="note">응답 내용은 구글 시트에 자동으로 기록됩니다</p>
+
+  <p class="sheet-note">응답 내용은 구글 시트에 자동으로 기록됩니다</p>
 </div>
+
 <div class="toast" id="toast"></div>
+
 <script>
-const WEBHOOK='https://script.google.com/macros/s/AKfycbxHcj5suU-fspycdAH8kR4iOfPfAozrWwCJ2CHCGdkNvH8P9HiTAsJVcQg_eRMnIB9ZdQ/exec';
-const FORM_URL='https://canva-training-apply.vercel.app/f/1w251j4t';
-function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
-function getName(){return document.getElementById('name-input').value.trim()}
-function sendToSheet(n,s,r){const img=new Image();img.src=WEBHOOK+'?'+new URLSearchParams({name:n,status:s,reason:r})}
-function handleApply(){const n=getName();if(!n){showToast('이름을 입력해주세요');return}sendToSheet(n,'신청','');showToast(n+'님 신청이 접수되었습니다 🎉');setTimeout(()=>{location.href=FORM_URL},800)}
-function toggleAbsent(){const s=document.getElementById('absent-section');s.style.display=s.style.display==='block'?'none':'block'}
-function handleAbsent(){const n=getName();const r=document.getElementById('absent-reason').value.trim();if(!n){showToast('이름을 입력해주세요');return}if(!r){showToast('불참 사유를 입력해주세요');return}sendToSheet(n,'불참',r);showToast(n+'님 불참이 기록되었습니다');document.getElementById('absent-section').style.display='none';document.getElementById('absent-reason').value=''}
+const WEBHOOK = 'https://script.google.com/macros/s/AKfycbxHcj5suU-fspycdAH8kR4iOfPfAozrWwCJ2CHCGdkNvH8P9HiTAsJVcQg_eRMnIB9ZdQ/exec';
+const FORM_URL = 'https://canva-training-apply.vercel.app/f/1w251j4t';
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function getName() {
+  return document.getElementById('name-input').value.trim();
+}
+
+function sendToSheet(name, status) {
+  const img = new Image();
+  img.src = WEBHOOK + '?' + new URLSearchParams({ name, status, reason: '' });
+}
+
+function handleApply() {
+  const name = getName();
+  if (!name) { showToast('이름을 입력해주세요'); return; }
+  sendToSheet(name, '신청');
+  showToast(name + '님 신청이 접수되었습니다 🎉');
+  setTimeout(() => { location.href = FORM_URL; }, 1500);
+}
+
+function handleAbsent() {
+  const name = getName();
+  if (!name) { showToast('이름을 입력해주세요'); return; }
+  sendToSheet(name, '불참');
+  showToast(name + '님 불참이 기록되었습니다');
+}
 </script>
 </body>
 </html>
